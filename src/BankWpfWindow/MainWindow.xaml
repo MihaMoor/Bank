@@ -6,6 +6,6 @@
         xmlns:local="clr-namespace:BankWpfWindow"
         mc:Ignorable="d"
         Title="Bank" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <Frame Source="Main.xaml" JournalOwnership="OwnsJournal" NavigationUIVisibility="Hidden"/>
+    <Frame Source="Pages/Main.xaml" JournalOwnership="OwnsJournal" NavigationUIVisibility="Hidden"/>
 
 </Window>
