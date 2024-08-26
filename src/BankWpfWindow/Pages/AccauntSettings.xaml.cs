@@ -15,6 +15,18 @@ public partial class AccauntSettings : Page
     public AccauntSettings()
     {
         InitializeComponent();
+        FillFields();
+    }
+
+    private void FillFields()
+    {
+        User user = UserManager.User;
+        IdElement.Text = user.Id.ToString();
+        FirstNameElement.Text = user.FirstName;
+        SecondNameElement.Text = user.LastName;
+        LoginElement.Text = user.Login;
+        PasswordElement.Text = user.Password;
+        MonthlyFinanceElement.Text = user.MonthlyFinance.ToString();
     }
 
     private void Save_Click(object sender, RoutedEventArgs e)
