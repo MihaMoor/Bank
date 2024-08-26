@@ -4,11 +4,18 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BankWpfWindow.Pages"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      mc:Ignorable="d"
+      d:Height="450" d:Width="800"
       Title="Authorization">
 
     <Grid>
-        
+        <Label Content="WELLCOME!" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" FontSize="48"/>
+        <Label Content="Login" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,150,0,0"/>
+        <TextBox x:Name="LoginElement" Width="200" Height="30" Margin="0,181,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Password" HorizontalAlignment="Center" Margin="0,224,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="PasswordElement" Width="200" Height="30" Margin="0,255,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="18"/>
+        <Button x:Name="EnterElement" Content="Войти" HorizontalAlignment="Left" Margin="266,319,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.5,0.5" Height="35" Click="EnterElement_Click"/>
+        <Button x:Name="RegistrationElement" Content="Зарегистрироваться" HorizontalAlignment="Left" Margin="414,319,0,0" VerticalAlignment="Top" Width="120" Height="35" Click="RegistrationElement_Click"/>
+
     </Grid>
 </Page>
