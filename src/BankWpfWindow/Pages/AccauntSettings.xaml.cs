@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace BankWpfWindow;
+namespace BankWpfWindow.Pages;
 
 /// <summary>
 /// Interaction logic for AccauntSettings.xaml

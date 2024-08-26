@@ -1,8 +1,7 @@
-﻿using Domain;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace BankWpfWindow;
+namespace BankWpfWindow.Pages;
 
 /// <summary>
 /// Interaction logic for Main.xaml
@@ -16,21 +15,24 @@ public partial class Main : Page
 
     private void AddFinance_Click(object sender, RoutedEventArgs e)
     {
-        AddCoast.Add(DateTime.Now, 1000);
+
     }
 
     private void AddCost_Click(object sender, RoutedEventArgs e)
     {
-
+        CleanCoastField();
     }
 
     private void CleanCoast_Click(object sender, RoutedEventArgs e)
     {
-
+        CleanCoastField();
     }
 
     private void Settings_Click(object sender, RoutedEventArgs e)
     {
         NavigationService.Navigate(new AccauntSettings());
     }
+
+    private void CleanCoastField()
+        => Coast.Text = string.Empty;
 }
