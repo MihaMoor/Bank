@@ -16,10 +16,10 @@
         <Label Content="Логин" HorizontalAlignment="Left" Margin="40,190,0,0" VerticalAlignment="Top" Width="150" Height="25" BorderBrush="Black"/>
         <TextBox x:Name="LoginElement" Margin="200,190,0,0" Height="20" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Label Content="Пароль" HorizontalAlignment="Left" Margin="40,240,0,0" VerticalAlignment="Top" Width="150" Height="25" BorderBrush="Black"/>
-        <TextBox x:Name="PasswordElement" Width="200" Height="20" Margin="200,240,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <PasswordBox x:Name="PasswordElement" Width="200" Height="20" Margin="200,240,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <Label Content="Ежемесячный зароботок" HorizontalAlignment="Left" Margin="40,290,0,0" VerticalAlignment="Top" Width="150" Height="25" BorderBrush="Black"/>
         <TextBox x:Name="MonthlyFinanceElement" Margin="200,290,0,0" Height="20" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Button Content="Сохранить" x:Name="Save" Width="100" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,340,0,0" Click="Save_Click"/>
+        <Button Content="Зарегистрироваться" x:Name="Save" Width="150" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,340,0,0" Click="Save_Click"/>
         <Button Content="Назад" x:Name="Back" Width="100" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="350,340,0,0" Click="Back_Click"/>
     </Grid>
 </Page>

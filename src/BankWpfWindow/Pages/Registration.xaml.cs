@@ -20,7 +20,7 @@ public partial class Registration : Page
             FirstName = FirstNameElement.Text,
             LastName = SecondNameElement.Text,
             Login = LoginElement.Text,
-            Password = PasswordElement.Text,
+            Password = PasswordElement.Password.ToString(),
             MonthlyFinance = double.Parse(MonthlyFinanceElement.Text),
         };
 

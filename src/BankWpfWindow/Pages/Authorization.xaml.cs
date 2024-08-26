@@ -18,7 +18,7 @@ public partial class Authorization : Page
     private void EnterElement_Click(object sender, System.Windows.RoutedEventArgs e)
     {
         Context context = new Context();
-        User? user = context.Users.FirstOrDefault(x => x.Login == LoginElement.Text && x.Password == PasswordElement.Text);
+        User? user = context.Users.FirstOrDefault(x => x.Login == LoginElement.Text && x.Password == PasswordElement.Password.ToString());
 
         if (user == null)
         {

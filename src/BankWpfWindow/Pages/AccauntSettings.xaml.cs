@@ -25,7 +25,7 @@ public partial class AccauntSettings : Page
         FirstNameElement.Text = user.FirstName;
         SecondNameElement.Text = user.LastName;
         LoginElement.Text = user.Login;
-        PasswordElement.Text = user.Password;
+        PasswordElement.Password = user.Password;
         MonthlyFinanceElement.Text = user.MonthlyFinance.ToString();
     }
 
@@ -38,7 +38,7 @@ public partial class AccauntSettings : Page
             MonthlyFinance = double.Parse(MonthlyFinanceElement.Text),
             LasUpdateTime = DateTime.Now,
             Login = LoginElement.Text,
-            Password = PasswordElement.Text,
+            Password = PasswordElement.Password.ToString(),
             Id = string.IsNullOrWhiteSpace(IdElement.Text)
                 ? Guid.NewGuid()
                 : Guid.Parse(IdElement.Text),
