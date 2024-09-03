@@ -11,6 +11,7 @@ public partial class Main : Page
     public Main()
     {
         InitializeComponent();
+        Balance.Content = UserManager.User.Balance;
     }
 
     private void AddFinance_Click(object sender, RoutedEventArgs e)
@@ -35,4 +36,9 @@ public partial class Main : Page
 
     private void CleanCoastField()
         => Coast.Text = string.Empty;
+
+    private void Logout_Click(object sender, RoutedEventArgs e)
+    {
+        NavigationService.Navigate(new Authorization());
+    }
 }

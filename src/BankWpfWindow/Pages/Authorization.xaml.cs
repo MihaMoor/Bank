@@ -12,10 +12,13 @@ public partial class Authorization : Page
 {
     public Authorization()
     {
+        if (NavigationService != null)
+            NavigationService.RemoveBackEntry();
+
         InitializeComponent();
     }
 
-    private void EnterElement_Click(object sender, System.Windows.RoutedEventArgs e)
+    private void EnterElement_Click(object sender, RoutedEventArgs e)
     {
         Context context = new Context();
         User? user = context.Users.FirstOrDefault(x => x.Login == LoginElement.Text && x.Password == PasswordElement.Password.ToString());
@@ -27,11 +30,15 @@ public partial class Authorization : Page
         }
 
         UserManager.SetUser(user);
+        UserManager.AddDailyFinance();
+
+        context.Users.Update(user);
+        context.SaveChanges();
 
         NavigationService.Navigate(new Main());
     }
 
-    private void RegistrationElement_Click(object sender, System.Windows.RoutedEventArgs e)
+    private void RegistrationElement_Click(object sender, RoutedEventArgs e)
     {
         NavigationService.Navigate(new Registration());
     }

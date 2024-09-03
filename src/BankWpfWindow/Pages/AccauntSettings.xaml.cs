@@ -36,7 +36,7 @@ public partial class AccauntSettings : Page
             FirstName = FirstNameElement.Text,
             LastName = SecondNameElement.Text,
             MonthlyFinance = double.Parse(MonthlyFinanceElement.Text),
-            LasUpdateTime = DateTime.Now,
+            LastUpdateTime = DateTime.Now,
             Login = LoginElement.Text,
             Password = PasswordElement.Password.ToString(),
             Id = string.IsNullOrWhiteSpace(IdElement.Text)

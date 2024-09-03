@@ -8,6 +8,8 @@ public static class UserManager
     public static User User { get; private set; } = null!;
     public static Context Context { get; } = new();
 
+    private static bool IsAddDailyFinance { get; set; } = false;
+
     public static void SetUser(User user)
     {
         if (user == null)
@@ -17,5 +19,14 @@ public static class UserManager
             return;
 
         User = user;
+    }
+
+    public static void AddDailyFinance()
+    {
+        if (!IsAddDailyFinance)
+        {
+            User.AddDailyFinance();
+            IsAddDailyFinance = true;
+        }
     }
 }
