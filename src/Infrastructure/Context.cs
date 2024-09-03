@@ -24,6 +24,11 @@ public class Context : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<User>()
+            .HasMany(x => x.BalanceHistory)
+            .WithOne(x => x.User)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<User>()
             .HasKey(x => x.Id);
     }
 }

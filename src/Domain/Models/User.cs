@@ -10,6 +10,7 @@ public class User
     public string Password { get; set; } = null!;
     public double MonthlyFinance { get; set; } = 1;
     public double Balance { get; set; } = 0;
+    public IList<BalanceHistory> BalanceHistory { get; set; } = null!;
 
     public void AddDailyFinance()
     {
@@ -19,14 +20,22 @@ public class User
         }
         else
         {
-            TimeSpan daysCount = DateTime.Now - LastUpdateTime;
+            TimeSpan daysCount = DateTime.UtcNow - LastUpdateTime;
             Balance += GetDailyFinance() * Math.Round(daysCount.TotalDays, 0);
         }
 
         Balance = Math.Round(Balance, 2);
-        LastUpdateTime = DateTime.Now;
+        LastUpdateTime = DateTime.UtcNow;
     }
 
     private double GetDailyFinance()
-        => MonthlyFinance / DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+        => MonthlyFinance / DateTime.DaysInMonth(DateTime.UtcNow.Year, DateTime.UtcNow.Month);
+
+    public void AddCoast(double amount)
+    {
+        if (amount < 0)
+            return;
+
+        Balance -= amount;
+    }
 }

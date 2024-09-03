@@ -1,5 +1,6 @@
 ﻿using Domain.Models;
 using Infrastructure;
+using Microsoft.EntityFrameworkCore;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -21,11 +22,17 @@ public partial class Authorization : Page
     private void EnterElement_Click(object sender, RoutedEventArgs e)
     {
         Context context = new Context();
-        User? user = context.Users.FirstOrDefault(x => x.Login == LoginElement.Text && x.Password == PasswordElement.Password.ToString());
+        User? user = context.Users
+            .Include(x => x.BalanceHistory)
+            .FirstOrDefault(x => x.Login == LoginElement.Text && x.Password == PasswordElement.Password.ToString());
 
         if (user == null)
         {
-            MessageBox.Show("Такого пользователя не существует!", "Ошибка входа", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(
+                "Такого пользователя не существует!",
+                "Ошибка входа",
+                MessageBoxButton.OK,
+                MessageBoxImage.Error);
             return;
         }
 

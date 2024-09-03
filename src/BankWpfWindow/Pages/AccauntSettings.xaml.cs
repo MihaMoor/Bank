@@ -1,5 +1,4 @@
 ﻿using Domain.Models;
-using Infrastructure;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -10,8 +9,6 @@ namespace BankWpfWindow.Pages;
 /// </summary>
 public partial class AccauntSettings : Page
 {
-    private Context _context = new();
-
     public AccauntSettings()
     {
         InitializeComponent();
@@ -27,25 +24,36 @@ public partial class AccauntSettings : Page
         LoginElement.Text = user.Login;
         PasswordElement.Password = user.Password;
         MonthlyFinanceElement.Text = user.MonthlyFinance.ToString();
+        BalanceElement.Text = user.Balance.ToString();
     }
 
     private void Save_Click(object sender, RoutedEventArgs e)
     {
-        User user = new()
-        {
-            FirstName = FirstNameElement.Text,
-            LastName = SecondNameElement.Text,
-            MonthlyFinance = double.Parse(MonthlyFinanceElement.Text),
-            LastUpdateTime = DateTime.Now,
-            Login = LoginElement.Text,
-            Password = PasswordElement.Password.ToString(),
-            Id = string.IsNullOrWhiteSpace(IdElement.Text)
-                ? Guid.NewGuid()
-                : Guid.Parse(IdElement.Text),
-        };
+        double oldBalance = UserManager.User.Balance;
 
-        _context.Add(user);
-        _context.SaveChanges();
+        UserManager.User.FirstName = FirstNameElement.Text;
+        UserManager.User.LastName = SecondNameElement.Text;
+        UserManager.User.MonthlyFinance = double.Parse(MonthlyFinanceElement.Text);
+        UserManager.User.LastUpdateTime = DateTime.UtcNow;
+        UserManager.User.Login = LoginElement.Text;
+        UserManager.User.Password = PasswordElement.Password.ToString();
+        UserManager.User.Balance = double.Parse(BalanceElement.Text);
+
+        if (Math.Abs(oldBalance - UserManager.User.Balance) > double.Epsilon)
+        {
+            UserManager.User.BalanceHistory.Add(new BalanceHistory()
+            {
+                UpdateDate = DateTime.UtcNow,
+                User = UserManager.User,
+                OldBalance = oldBalance,
+                CurrentBalance = UserManager.User.Balance,
+            });
+        }
+
+        UserManager.Context.Update(UserManager.User);
+        UserManager.Context.SaveChanges();
+
+        NavigationService.Navigate(new Main());
     }
 
     private void Back_Click(object sender, RoutedEventArgs e)
