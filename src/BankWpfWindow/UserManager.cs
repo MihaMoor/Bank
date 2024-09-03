@@ -6,7 +6,7 @@ namespace BankWpfWindow;
 public static class UserManager
 {
     public static User User { get; private set; } = null!;
-    public static Context Context { get; } = new();
+    public static Context Context { get; private set; } = new();
 
     private static bool IsAddDailyFinance { get; set; } = false;
 
@@ -28,5 +28,11 @@ public static class UserManager
             User.AddDailyFinance();
             IsAddDailyFinance = true;
         }
+    }
+
+    public static void RefreshManager()
+    {
+        User = null!;
+        Context = new();
     }
 }

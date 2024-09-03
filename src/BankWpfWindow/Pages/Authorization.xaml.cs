@@ -1,5 +1,4 @@
 ﻿using Domain.Models;
-using Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,8 +20,7 @@ public partial class Authorization : Page
 
     private void EnterElement_Click(object sender, RoutedEventArgs e)
     {
-        Context context = new Context();
-        User? user = context.Users
+        User? user = UserManager.Context.Users
             .Include(x => x.BalanceHistory)
             .FirstOrDefault(x => x.Login == LoginElement.Text && x.Password == PasswordElement.Password.ToString());
 
@@ -39,8 +37,8 @@ public partial class Authorization : Page
         UserManager.SetUser(user);
         UserManager.AddDailyFinance();
 
-        context.Users.Update(user);
-        context.SaveChanges();
+        UserManager.Context.Users.Update(user);
+        UserManager.Context.SaveChanges();
 
         NavigationService.Navigate(new Main());
     }

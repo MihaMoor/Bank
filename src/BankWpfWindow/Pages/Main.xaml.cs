@@ -2,6 +2,7 @@
 using Domain.Models;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace BankWpfWindow.Pages;
 
@@ -90,6 +91,15 @@ public partial class Main : Page
 
     private void Logout_Click(object sender, RoutedEventArgs e)
     {
+        UserManager.RefreshManager();
         NavigationService.Navigate(new Authorization());
+    }
+
+    private void EnterKeyAddCoast(object sender, KeyEventArgs e)
+    {
+        if (e.Key == Key.Enter)
+        {
+            AddCost_Click(sender, e);
+        }
     }
 }

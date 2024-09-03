@@ -19,7 +19,7 @@
         <Label
             Content="Остаток:"
             HorizontalAlignment="Left"
-            Margin="40,40,0,0"
+            Margin="0,80,0,0"
             VerticalAlignment="Top"
             Width="55"
             Height="25"
@@ -28,49 +28,57 @@
             x:Name="Balance"
             Content=""
             HorizontalAlignment="Left"
-            Margin="100,40,0,0"
+            Margin="55,80,0,0"
             VerticalAlignment="Top"
-            Width="200"
+            Height="30"
+            Width="70"
             BorderBrush="Black"
-            BorderThickness="1,1,1,0"/>
+            BorderThickness="1,1,1,1"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"/>
+        <TextBox
+            x:Name="Coast"
+            HorizontalAlignment="Left"
+            Margin="270,80,0,0"
+            TextWrapping="Wrap"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            VerticalAlignment="Top"
+            Width="70"
+            Height="30" KeyDown="EnterKeyAddCoast"/>
         <Button
             x:Name="AddCoast"
             Content="Добавить расход"
             HorizontalAlignment="Left"
-            Margin="337,99,0,0"
+            Margin="350,80,0,0"
             VerticalAlignment="Top"
+            Height="30"
             Width="104"
             Click="AddCost_Click"/>
         <Button
             x:Name="CleanCoast"
             Content="Очитстить"
             HorizontalAlignment="Left"
-            Margin="467,99,0,0"
+            Margin="464,80,0,0"
             VerticalAlignment="Top"
             Width="92"
+            Height="30"
             Click="CleanCoast_Click"/>
-        <TextBox
-            x:Name="Coast"
-            HorizontalAlignment="Left"
-            Margin="100,99,0,0"
-            TextWrapping="Wrap"
-            VerticalAlignment="Top"
-            Width="200"
-            Height="20"/>
         <Button
             x:Name="Logout"
             Content="LogOut"
             HorizontalAlignment="Left"
-            Margin="676,350,0,0"
+            Margin="676,380,0,0"
             VerticalAlignment="Top"
             Width="102"
             Click="Logout_Click"/>
 
         <DataGrid
             x:Name="BalanceHistoryElement"
-            Height="200" HorizontalAlignment="Stretch"
+            Height="200"
+            HorizontalAlignment="Stretch"
             VerticalAlignment="Top"
-            Margin="0,135,0,0"
+            Margin="0,155,0,0"
             ScrollViewer.VerticalScrollBarVisibility="Auto"
             AutoGenerateColumns="True"
             CanUserResizeColumns="True"
